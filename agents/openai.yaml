@@ -1,4 +1,4 @@
 interface:
   display_name: "手帐素材合集生成器"
   short_description: "把照片提炼为16:9透明PNG复古手绘手帐素材合集"
-  default_prompt: "使用 $make-journal-material-sheet 把这张照片制作成16:9透明PNG手帐素材合集。"
+  default_prompt: "使用 $make-journal-material-skill 把这张照片制作成16:9透明PNG手帐素材合集。"

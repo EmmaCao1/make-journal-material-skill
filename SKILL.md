@@ -1,5 +1,5 @@
 ---
-name: make-journal-material-sheet
+name: make-journal-material-skill
 description: 将室内、旅行、静物或生活照片提炼成复古水粉剪纸风的手帐独立素材合集，并固定输出为 1920×1080（16:9）透明背景 PNG。用于用户要求“做手帐素材合集”“从照片提取独立物件/贴纸”“生成 16:9 透明 PNG 素材页”或希望延续佛罗伦萨室内插画的手绘风格时。
 ---
 
