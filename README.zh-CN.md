@@ -37,7 +37,7 @@
 把仓库下载或克隆到 Codex 的个人 Skills 目录：
 
 ```bash
-git clone https://github.com/EmmaCao1/make-journal-material-skill.git \
+git clone https://github.com/emmaCCdesign/make-journal-material-skill.git \
   ~/.codex/skills/make-journal-material-skill
 
 python3 -m pip install -r \
@@ -47,7 +47,7 @@ python3 -m pip install -r \
 如果你已经在 Codex 中使用 Skill 安装器，也可以直接说：
 
 ```text
-请从 https://github.com/EmmaCao1/make-journal-material-skill 安装这个 Skill。
+请从 https://github.com/emmaCCdesign/make-journal-material-skill 安装这个 Skill。
 ```
 
 ### 2. 调用
@@ -134,4 +134,4 @@ make-journal-material-skill/
 
 ## 许可证
 
-[MIT License](LICENSE) © EmmaCao1
+[MIT License](LICENSE) © emmaCCdesign

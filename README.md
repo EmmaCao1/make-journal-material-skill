@@ -37,7 +37,7 @@
 Download or clone the repository into your personal Codex Skills directory:
 
 ```bash
-git clone https://github.com/EmmaCao1/make-journal-material-skill.git \
+git clone https://github.com/emmaCCdesign/make-journal-material-skill.git \
   ~/.codex/skills/make-journal-material-skill
 
 python3 -m pip install -r \
@@ -47,7 +47,7 @@ python3 -m pip install -r \
 If you use a Skill installer in Codex, you can simply ask:
 
 ```text
-Install this Skill from https://github.com/EmmaCao1/make-journal-material-skill.
+Install this Skill from https://github.com/emmaCCdesign/make-journal-material-skill.
 ```
 
 ### 2. Use
@@ -134,4 +134,4 @@ make-journal-material-skill/
 
 ## License
 
-[MIT License](LICENSE) © EmmaCao1
+[MIT License](LICENSE) © emmaCCdesign
