@@ -1,35 +1,40 @@
+<p align="right">
+  <a href="./README.md"><img alt="English" src="https://img.shields.io/badge/English-selected-111827"></a>
+  <a href="./README.zh-CN.md"><img alt="简体中文" src="https://img.shields.io/badge/简体中文-switch-D97757"></a>
+</p>
+
 # Make Journal Material Skill
 
-> 把旅行、室内、静物与生活照片，变成可单独剪贴的复古手绘手帐素材合集。
+> Turn travel, interior, still-life, and everyday photos into separate, cuttable, hand-painted journaling materials.
 
 [![Codex Skill](https://img.shields.io/badge/Codex-Skill-111827)](https://developers.openai.com/codex)
 ![Canvas](https://img.shields.io/badge/canvas-1920%C3%971080-8A9A5B)
 ![PNG](https://img.shields.io/badge/output-transparent_PNG-D97757)
 [![License: MIT](https://img.shields.io/badge/license-MIT-CB8B3C.svg)](LICENSE)
 
-`make-journal-material-skill` 会从一张照片中提取有记忆点的物件，统一转绘成复古水粉剪纸风，并交付一张 **16:9、1920×1080、透明背景 PNG** 素材页。
+`make-journal-material-skill` extracts memorable objects from a photo, redraws them in a consistent retro gouache and cut-paper style, and delivers a **16:9, 1920×1080 transparent PNG** material sheet.
 
-## 效果预览
+## Preview
 
-| 风格语言 | 实际输出示例 |
+| Visual language | Example output |
 | --- | --- |
-| ![复古水粉剪纸风格参考](assets/style-reference.png) | ![16:9 透明 PNG 手帐素材合集](assets/example-output.png) |
+| ![Retro gouache and cut-paper style reference](assets/style-reference.png) | ![16:9 transparent PNG journaling material collection](assets/example-output.png) |
 
-> 左图只定义画法、色彩和质感；右图展示 Skill 从另一张生活照片提取并转绘出的最终透明素材。输入照片与洋红色键中间图不会被公开或交付。
+> The image on the left defines only the rendering style, palette, and texture. The image on the right is a final transparent material sheet extracted and redrawn from a different everyday photo. The input photo and magenta chroma-key intermediate are neither published nor delivered.
 
-## 它会做什么
+## What it does
 
-- 从照片中提取默认 9 组代表性物件，不照搬杂乱背景。
-- 把真实光影和透视压缩成复古民间艺术式水粉色块。
-- 保留物件辨识度，同时加入手绘边缘、纸张颗粒与装饰纹样。
-- 自动去除生成阶段的色键背景，并检查透明通道。
-- 固定输出为 1920×1080 的 RGBA PNG，方便在手帐、拼贴和排版中直接使用。
+- Extracts nine representative object groups by default instead of reproducing a cluttered background.
+- Compresses realistic lighting and perspective into flat, decorative folk-art gouache shapes.
+- Preserves recognizable object identities while adding hand-drawn edges, paper grain, and decorative patterns.
+- Removes the generation-stage chroma key and verifies the alpha channel automatically.
+- Produces a fixed 1920×1080 RGBA PNG ready for journals, collages, and layouts.
 
-## 快速开始
+## Quick start
 
-### 1. 安装
+### 1. Install
 
-把仓库下载或克隆到 Codex 的个人 Skills 目录：
+Download or clone the repository into your personal Codex Skills directory:
 
 ```bash
 git clone https://github.com/EmmaCao1/make-journal-material-skill.git \
@@ -39,81 +44,83 @@ python3 -m pip install -r \
   ~/.codex/skills/make-journal-material-skill/requirements.txt
 ```
 
-如果你已经在 Codex 中使用 Skill 安装器，也可以直接说：
+If you use a Skill installer in Codex, you can simply ask:
 
 ```text
-请从 https://github.com/EmmaCao1/make-journal-material-skill 安装这个 Skill。
+Install this Skill from https://github.com/EmmaCao1/make-journal-material-skill.
 ```
 
-### 2. 调用
+### 2. Use
 
-上传一张照片，然后说：
+Upload a photo, then say:
 
 ```text
-使用 $make-journal-material-skill，把这张照片制作成 16:9 透明 PNG 手帐素材合集。
+Use $make-journal-material-skill to turn this photo into a 16:9 transparent PNG journaling material collection.
 ```
 
-你也可以补充想保留的物件：
+You can also name the objects you want to preserve:
 
 ```text
-使用 $make-journal-material-skill，重点提取小鸟、咖啡杯、圆桌和石墙元素。
+Use $make-journal-material-skill and prioritize the bird, coffee cups, round table, and stone-wall motifs.
 ```
 
-## 输出标准
+## Output specification
 
-| 项目 | 固定规则 |
+| Item | Fixed rule |
 | --- | --- |
-| 画布 | 横向 16:9，1920×1080 |
-| 文件 | PNG，带有效 Alpha 透明通道 |
-| 数量 | 默认 9 组独立素材 |
-| 排版 | 三行三列、间距宽松、无重叠和裁切 |
-| 风格 | 复古水粉、民间艺术、剪纸色块、轻微纸张颗粒 |
-| 背景 | 最终完全透明，不含墙面、地面、阴影或贴纸白边 |
-| 交付 | 只展示最终成品，不向用户展示色键及失败中间图 |
+| Canvas | Horizontal 16:9, 1920×1080 |
+| File | PNG with a valid alpha channel |
+| Quantity | Nine independent object groups by default |
+| Layout | Loose 3×3 grid with generous cutting space, no overlap or cropping |
+| Style | Retro gouache, folk art, cut-paper shapes, subtle paper grain |
+| Background | Fully transparent; no wall, floor, cast shadow, or sticker border |
+| Delivery | Final artwork only; chroma-key and failed intermediates stay hidden |
 
-## 工作方式
+## How it works
 
 ```text
-输入照片
-  → 选择具有记忆点的物件
-  → 按内置风格参考转绘
-  → 生成 16:9 色键素材页
-  → 去色键与边缘净化
-  → 尺寸、透明度与视觉检查
-  → 交付透明 PNG
+Input photo
+  → Select memorable objects
+  → Redraw with the bundled style reference
+  → Generate a 16:9 chroma-key material sheet
+  → Remove the key and clean the edges
+  → Validate size, transparency, and visual quality
+  → Deliver the transparent PNG
 ```
 
-仓库内的 `SKILL.md` 负责物件选择、画面风格、生成提示词与交付规则；`scripts/finalize_transparent_png.py` 负责色键移除、边缘去色、尺寸规范化和透明度验证。
+`SKILL.md` defines object selection, visual treatment, generation prompts, and delivery rules. `scripts/finalize_transparent_png.py` handles chroma-key removal, edge decontamination, size normalization, and transparency validation.
 
-## 运行条件
+## Requirements
 
-- 宿主需要具备图片生成或图片编辑能力；本仓库不包含生成模型或 API 密钥。
-- 后处理需要 Python 3 和 Pillow，依赖写在 `requirements.txt` 中。
-- Skill 不依赖作者电脑上的其他 Skill、私人文件夹或 Codex 内部脚本。
-- `assets/style-reference.png` 是随仓库发布的风格锚点，安装后即可使用。
+- The host must provide image-generation or image-editing capability. This repository does not include a model or API key.
+- Post-processing requires Python 3 and Pillow, declared in `requirements.txt`.
+- The Skill does not depend on the author's other local Skills, private folders, or Codex system scripts.
+- `assets/style-reference.png` is the bundled visual anchor and is available immediately after installation.
 
-## 常见问题
+## FAQ
 
-### 为什么生成过程中会有洋红背景？
+### Why is there a magenta background during generation?
 
-它只是内部色键，用来稳定生成独立物件并在后处理中换成透明通道。Skill 规定不向用户展示或交付这个中间产物。
+It is an internal chroma key that helps isolate objects reliably before post-processing converts it into transparency. The Skill explicitly prevents this intermediate from being shown or delivered to the user.
 
-### 可以指定少于或多于 9 组素材吗？
+### Can I request fewer or more than nine object groups?
 
-可以。9 组是默认值；你可以在请求中指定数量和必须保留的物件，但仍建议保留足够剪裁间距。
+Yes. Nine is the default. You can specify another count and list mandatory objects, while still leaving enough cutting space around every motif.
 
-### 能直接得到透明背景吗？
+### Will the final image really be transparent?
 
-最终交付一定是透明 PNG。生成阶段是否原生透明由宿主能力决定；Skill 会使用色键后处理作为稳定方案。
+Yes. The delivered file must be a transparent PNG. Whether the generation host supports native transparency does not matter because the Skill includes a stable chroma-key post-processing workflow.
 
-### 会上传或公开我的原始照片吗？
+### Will my original photo be uploaded to this repository?
 
-仓库本身不会保存用户输入照片。图片生成服务如何处理输入，取决于你所使用的宿主与服务条款。
+No. The repository does not store user input photos. How an image-generation service handles inputs depends on the host and service terms you use.
 
-## 仓库结构
+## Repository structure
 
 ```text
 make-journal-material-skill/
+├── README.md
+├── README.zh-CN.md
 ├── SKILL.md
 ├── agents/openai.yaml
 ├── assets/
