@@ -16,11 +16,11 @@
 
 ## 效果预览
 
-| 风格语言 | 实际输出示例 |
+| 1 · 原始输入照片 | 2 · 对应生成的素材合集 |
 | --- | --- |
-| ![复古水粉剪纸风格参考](assets/style-reference.png) | ![16:9 透明 PNG 手帐素材合集](assets/example-output.png) |
+| ![作为内容来源的原始室内照片](assets/example-input.jpg) | ![从同一张室内照片中提取并生成的手帐素材合集](assets/example-output.png) |
 
-> 左图只定义画法、色彩和质感；右图展示 Skill 从另一张生活照片提取并转绘出的最终透明素材。输入照片与洋红色键中间图不会被公开或交付。
+> 这是一组对应的生成前后示例：左图是原始照片，右图中的物件均从这张照片中提取并重新绘制。洋红色键中间图不会展示或交付。
 
 ## 它会做什么
 
@@ -125,6 +125,7 @@ make-journal-material-skill/
 ├── agents/openai.yaml
 ├── assets/
 │   ├── style-reference.png
+│   ├── example-input.jpg
 │   └── example-output.png
 ├── scripts/finalize_transparent_png.py
 ├── requirements.txt

@@ -16,11 +16,11 @@
 
 ## Preview
 
-| Visual language | Example output |
+| 1 · Input photo | 2 · Corresponding generated material collection |
 | --- | --- |
-| ![Retro gouache and cut-paper style reference](assets/style-reference.png) | ![16:9 transparent PNG journaling material collection](assets/example-output.png) |
+| ![Original interior photo used as the content source](assets/example-input.jpg) | ![Journaling material collection generated from the same interior photo](assets/example-output.png) |
 
-> The image on the left defines only the rendering style, palette, and texture. The image on the right is a final transparent material sheet extracted and redrawn from a different everyday photo. The input photo and magenta chroma-key intermediate are neither published nor delivered.
+> These two images are a matched before-and-after example: the left image is the source photo, and the right image contains the objects extracted and redrawn from that same photo. The magenta chroma-key intermediate is never shown or delivered.
 
 ## What it does
 
@@ -125,6 +125,7 @@ make-journal-material-skill/
 ├── agents/openai.yaml
 ├── assets/
 │   ├── style-reference.png
+│   ├── example-input.jpg
 │   └── example-output.png
 ├── scripts/finalize_transparent_png.py
 ├── requirements.txt
